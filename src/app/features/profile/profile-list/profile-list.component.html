@@ -1,0 +1,13 @@
+<mat-list *ngFor="let user of users">
+
+    <mat-list-item>
+        <div class="text" (click)="toProfileDetail(user)">
+            <img [src]="user.picture"/>
+            {{ user.firstName }} {{ user.lastName }}
+        </div>
+    </mat-list-item>
+    <div *ngIf="user.displayed">
+        <app-profile-detail [user]="user" ></app-profile-detail>
+    </div>
+
+</mat-list>

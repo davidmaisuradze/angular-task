@@ -6,6 +6,7 @@ import { AppStoreModule } from '@store/store.module';
 import { LayoutModule } from './layout/layout.module';
 import { moduleImportGuard } from './module-import-guard';
 import { RoutingModule } from './routing/routing.module';
+import { ProfileService } from '@core/services/profile.service';
 
 @NgModule({
     declarations: [],
@@ -25,7 +26,8 @@ import { RoutingModule } from './routing/routing.module';
         Location,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader },
-        { provide: 'Window', useValue: window }
+        { provide: 'Window', useValue: window },
+        ProfileService
     ]
 })
 export class CoreModule {

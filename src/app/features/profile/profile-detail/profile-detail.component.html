@@ -2,11 +2,14 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <mat-card *ngIf="user$ | async as user" class="card">
+    <div class="hide-details" (click)="goBack()">
+        Go Back
+    </div>
+    <mat-card *ngIf="user">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
             <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture" />
+            <img mat-card-md-image [src]="user.picture" />
         </mat-card-title-group>
         <mat-card-content>
             <mat-list>

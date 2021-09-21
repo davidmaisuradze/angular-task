@@ -1,12 +1,13 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
-import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
+import { loadProfileSuccess, profileActions } from '@store/actions';
+import { UserProfile } from '@interfaces';
 
 const dummyProfile: UserProfile = {
     cellNumber: '888-888-8888',
     city: 'Los Angeles',
     dateOfBirth: 'Jan 1st, 1966',
+    displayed: false,
     email: 'test@crexi.com',
     firstName: 'First Name',
     lastName: 'Last Name',
@@ -22,6 +23,11 @@ const reducer = createReducer(
     on(profileActions.initProfile, (state) => {
 
         return { ...state, user: dummyProfile };
+
+    }),
+    on(loadProfileSuccess, (state, action) => {
+
+        return { ...state, user: action.user };
 
     })
 );
